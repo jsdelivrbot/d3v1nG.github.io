@@ -1,16 +1,17 @@
 h1 {
-    text-align: right;
+    text-align: center;
     font-family: cursive;
     
 }
 
 p {
-    text-align: right;
+    text-align: center;
     font-family: sans-serif;
+    color: White;
 }
 
 body {
-    text-align: right;
+    text-align: center;
     
 }
 
@@ -19,6 +20,6 @@ body {
  }
  
  html {
-     background-image: url("https://i.imgur.com/FyCO6pw.jpg")
+     background-image: url("http://www.desktopimages.org/pictures/2014/0131/1/orig_368437.jpg")
  }
  
