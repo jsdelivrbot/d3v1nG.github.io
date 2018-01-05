@@ -2,11 +2,13 @@ var player;
 var playerImage;
 var enemy;
 var enemyImage;
+var backgroundImage;
 var isGameOver;
 
 function preload() {
     playerImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/N5uCbDu.png")
     enemyImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/OdL0XPt.png")
+    backgroundImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/aKQOg3G.png")
 }
 
 function setup() {
@@ -16,10 +18,11 @@ function setup() {
     player.addImage(playerImage)
     enemy = createSprite(width/2, 0, 0, 0)
     enemy.addImage(enemyImage)
+    enemy.rotationSpeed = 4.0;
 }
 
 function draw() {
-    background(0, 0, 100);
+    background(backgroundImage);
     if (keyDown(RIGHT_ARROW) && player.position.x < width) {
         player.position.x = player.position.x + 3
     }
