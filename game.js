@@ -1,24 +1,29 @@
 var player;
 var playerImage;
+//var hunter;
+//var hunterImage;
 var enemy;
 var enemyImage;
 var backgroundImage;
 var isGameOver;
 
 function preload() {
-    playerImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/N5uCbDu.png")
+    playerImage = loadImage("http://i.imgur.com/gMG8oAS.png")
     enemyImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/OdL0XPt.png")
     backgroundImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/aKQOg3G.png")
+    //hunterImage = loadImage("http://www.iconarchive.com/download/i61916/jonathan-rey/star-wars-vehicles/Slave-I.ico")
 }
 
 function setup() {
     isGameOver = false;
-    createCanvas(256, 256);
-    player = createSprite(width/2, height-25, 0, 0);
+    createCanvas(900, 600);
+    player = createSprite(width/2, height-100, 0, 0);
     player.addImage(playerImage)
     enemy = createSprite(width/2, 0, 0, 0)
     enemy.addImage(enemyImage)
     enemy.rotationSpeed = 4.0;
+    //hunter = createSprite(width/2, hieght-25, 0, 0);
+    //hunter.addImage(hunterImage)
 }
 
 function draw() {
@@ -50,6 +55,9 @@ function draw() {
         }
     }
     
+    //hunter.position.y = 0;
+    //hunter.position.x = 0;
+    
     drawSprites();
 }
 
@@ -64,8 +72,8 @@ function gameOver() {
 function mouseClicked() {
     if (isGameOver) {
         isGameOver = false;
-        player.position.x = width/2;
-        player.position.y = height-25;
+        player.position.x = width/4;
+        player.position.y = height-100;
         enemy.position.x = width/2;
         enemy.position.y = 0;
     }
