@@ -55,8 +55,11 @@ function draw() {
         }
     }
     
-    //hunter.position.y = random();
-    //hunter.position.x = 0;
+    hunter.position.x = hunter.position.x + 2;
+    
+    if (hunter.position.x > width) {
+        hunterMovement();
+    }
     
     drawSprites();
 }
@@ -77,4 +80,8 @@ function mouseClicked() {
         enemy.position.x = width/2;
         enemy.position.y = 0;
     }
+}
+
+function hunterMovement() {
+    hunter.position.x = hunter.position.x - 2;
 }
