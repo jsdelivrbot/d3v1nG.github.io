@@ -6,12 +6,18 @@ var enemy;
 var enemyImage;
 var backgroundImage;
 var isGameOver;
+var flame;
+var flameballImage;
+var speed = 1;
+var direction;
+var xpos = 0;
 
 function preload() {
     playerImage = loadImage("http://i.imgur.com/gMG8oAS.png")
     enemyImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/OdL0XPt.png")
     backgroundImage = loadImage("https://surrogate.hackedu.us/i.imgur.com/aKQOg3G.png")
     hunterImage = loadImage("./Images/tiefighter.png")
+    flameballImage = loadImage("./Images/flameBall.png")
 }
 
 function setup() {
@@ -21,7 +27,7 @@ function setup() {
     player.addImage(playerImage)
     enemy = createSprite(width/2, 0, 0, 0);
     enemy.addImage(enemyImage)
-    enemy.rotationSpeed = 4.0;
+    enemy.rotationSpeed = random();
     hunter = createSprite(width/2, 25, 0, 0);
     hunter.addImage(hunterImage)
 }
@@ -54,11 +60,11 @@ function draw() {
             isGameOver = true;
         }
     }
+    direction = xpos * speed
+    hunter.position.x = hunter.position.x - direction;
     
-    hunter.position.x = hunter.position.x + 2;
-    
-    if (hunter.position.x > width) {
-        hunterMovement();
+    if (hunter.position.x < 0 || hunter.position.x > width) {
+        speed = speed * -1
     }
     
     drawSprites();
@@ -70,18 +76,29 @@ function gameOver() {
     fill("white");
     text("Game Over!", width/2, height/2);
     text("Click anywhere to try again.", width/2, 3*height/4);
+    flame = createSprite();
+    flame.addImage(flameballImage);
+    flame.position.x = player.position.x
+    flame.position.y = player.position.y
 }
+
+
 
 function mouseClicked() {
     if (isGameOver) {
         isGameOver = false;
-        player.position.x = width/4;
+        player.position.x = width/2;
         player.position.y = height-100;
         enemy.position.x = width/2;
         enemy.position.y = 0;
+        removeSprite(flame)
     }
 }
 
-function hunterMovement() {
-    hunter.position.x = hunter.position.x - 2;
-}
+//function hunterMovementleft() {
+//    hunter.position.x = hunter.position.x - 2;
+//}
+
+//function hunterMovementright() {
+//    hunter.position.x = hunter.position.x + 2;
+//}
