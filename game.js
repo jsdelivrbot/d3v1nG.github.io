@@ -8,7 +8,7 @@ var backgroundImage;
 var isGameOver;
 var flame;
 var flameballImage;
-var speed = 1;
+var speed = 5;
 var direction;
 var xpos = 0;
 
@@ -34,12 +34,19 @@ function setup() {
 
 function draw() {
     background(backgroundImage);
+    
+    hunter.position.x = hunter.position.x + speed 
+    
+    if (hunter.position.x > width || hunter.position.x < 0) {
+        speed = speed*-1
+    }
+    
     if (keyDown(RIGHT_ARROW) && player.position.x < width) {
         player.position.x = player.position.x + 3
     }
     
     if (keyDown(LEFT_ARROW) && player.position.x > 0) {
-        player.position.x = player.position.x - 3
+        player.position.x = player.position.x - 5
     }
     
     enemy.position.y = enemy.position.y + 5;
@@ -60,26 +67,23 @@ function draw() {
             isGameOver = true;
         }
     }
-    direction = xpos * speed
-    hunter.position.x = hunter.position.x - direction;
-    
-    if (hunter.position.x < 0 || hunter.position.x > width) {
-        speed = speed * -1
-    }
+
+    //hunter.position.x = width/2;
+    //hunter.position.y = 0;
     
     drawSprites();
 }
 
 function gameOver() {
     background(0);
-    textAlign(CENTER);
-    fill("white");
-    text("Game Over!", width/2, height/2);
-    text("Click anywhere to try again.", width/2, 3*height/4);
     flame = createSprite();
     flame.addImage(flameballImage);
     flame.position.x = player.position.x
     flame.position.y = player.position.y
+    textAlign(CENTER);
+    fill("white");
+    text("Game Over!", width/2, height/2);
+    text("Click anywhere to try again.", width/2, 3*height/4);
 }
 
 
@@ -91,14 +95,5 @@ function mouseClicked() {
         player.position.y = height-100;
         enemy.position.x = width/2;
         enemy.position.y = 0;
-        removeSprite(flame)
     }
 }
-
-//function hunterMovementleft() {
-//    hunter.position.x = hunter.position.x - 2;
-//}
-
-//function hunterMovementright() {
-//    hunter.position.x = hunter.position.x + 2;
-//}
