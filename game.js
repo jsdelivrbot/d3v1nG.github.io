@@ -22,7 +22,6 @@ function preload() {
 }
 
 function setup() {
-    movement = true;
     isGameOver = false;
     createCanvas(900, 600);
     player = createSprite(width/2, height-100, 0, 0);
@@ -34,8 +33,8 @@ function setup() {
     hunter.addImage(hunterImage)
     flame = createSprite();
     flame.addImage(flameballImage);
-    flame.position.x = flame.position.x + width*2
-    flame.position.y = flame.position.y + height*2
+    flame.position.x = 1200
+    flame.position.y = 1000
 }
 
 function draw() {
@@ -46,10 +45,10 @@ function draw() {
     if (hunter.position.x > width || hunter.position.x < 0) {
         speed = speed*-1
     }
-    movement = true;
+    
     if (movement === true) {
         if (keyDown(RIGHT_ARROW) && player.position.x < width) {
-            player.position.x = player.position.x + 3
+            player.position.x = player.position.x + 5
         }
     
         if (keyDown(LEFT_ARROW) && player.position.x > 0) {
@@ -77,6 +76,7 @@ function draw() {
     }
     
     drawSprites();
+    status();
 }
 
 function gameOver() {
@@ -94,13 +94,20 @@ function gameOver() {
 
 function mouseClicked() {
     if (isGameOver) {
+        movement = true;
         isGameOver = false;
         player.position.x = width/2;
         player.position.y = height-100;
         enemy.position.x = width/2;
         enemy.position.y = 0;
-        flame.positon.y = flame.position.y + height*2;
-        flame.position.x = flame.postition.x + width*2;
-        movement = true;
+        flame.positon.y = 1200
+        flame.position.x = 1000
+
     }
+}
+
+function status() {
+    fill("white")
+    text("Movemnet is ", 10, 10)
+    text(movement, 10, 20)
 }
