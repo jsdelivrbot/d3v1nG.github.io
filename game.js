@@ -9,7 +9,7 @@ var isGameOver;
 var flame;
 var flameballImage;
 var speed = 5;
-var direction;
+var score = 0;
 var xpos = 0;
 var movement = true;
 
@@ -54,6 +54,8 @@ function draw() {
         if (keyDown(LEFT_ARROW) && player.position.x > 0) {
             player.position.x = player.position.x - 5
         }
+        flame.position.x = 1200
+        flame.position.y = 1000
     }
     
     enemy.position.y = enemy.position.y + 5;
@@ -61,6 +63,7 @@ function draw() {
     if (enemy.position.y > height) {
         enemy.position.y = 0;
         enemy.position.x = random(5, width-5);
+        score = score + 1
     }
     
     if (enemy.overlap(player)) {
@@ -100,9 +103,7 @@ function mouseClicked() {
         player.position.y = height-100;
         enemy.position.x = width/2;
         enemy.position.y = 0;
-        flame.positon.y = 1200
-        flame.position.x = 1000
-
+        score = score - score
     }
 }
 
@@ -110,4 +111,5 @@ function status() {
     fill("white")
     text("Movemnet is ", 10, 10)
     text(movement, 10, 20)
+    text(score, 20, 30)
 }
