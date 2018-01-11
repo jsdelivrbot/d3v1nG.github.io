@@ -109,7 +109,5 @@ function mouseClicked() {
 
 function status() {
     fill("white")
-    text("Movemnet is ", 10, 10)
-    text(movement, 10, 20)
     text(score, 20, 30)
 }
