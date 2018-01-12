@@ -15,6 +15,7 @@ var movement = true;
 var jumpImage;
 var sexyJabba;
 var hairy;
+var assSpeed = [5, 8, 12, 10];
 
 function preload() {
     playerImage = loadImage("http://i.imgur.com/gMG8oAS.png")
@@ -77,7 +78,7 @@ function draw() {
         background(backgroundImage)
     }
     
-    enemy.position.y = enemy.position.y + 5;
+    enemy.position.y = enemy.position.y + random(assSpeed);
     
     if (enemy.position.y > height && movement === true) {
         enemy.position.y = 0;
