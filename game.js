@@ -13,6 +13,8 @@ var score = 0;
 var xpos = 0;
 var movement = true;
 var jumpImage;
+var sexyJabba;
+var hairy;
 
 function preload() {
     playerImage = loadImage("http://i.imgur.com/gMG8oAS.png")
@@ -21,6 +23,8 @@ function preload() {
     hunterImage = loadImage("./Images/tiefighter.png")
     flameballImage = loadImage("./Images/flameBall.png")
     jumpImage = loadImage("./Images/jump.png")
+    sexyJabba = loadImage("./Images/sexyjabba.png")
+    hairy = loadImage("./Images/hairy.png")
 }
 
 function setup() {
@@ -60,11 +64,25 @@ function draw() {
         flame.position.y = 1000
     }
     
+    if (score === 5) {
+        background(jumpImage)
+    } 
+    else if (score === 10) {
+        background(sexyJabba)
+    }
+    else if (score === 15) {
+        background(hairy)
+    }
+    else {
+        background(backgroundImage)
+    }
+    
     enemy.position.y = enemy.position.y + 5;
     
-    if (enemy.position.y > height) {
+    if (enemy.position.y > height && movement === true) {
         enemy.position.y = 0;
         enemy.position.x = random(5, width-5);
+        score = score + 1
     }
     
     if (enemy.overlap(player)) {
@@ -84,7 +102,7 @@ function draw() {
 }
 
 function gameOver() {
-    background(jumpImage);
+    background(0);
     flame.position.x = player.position.x
     flame.position.y = player.position.y
     movement = false;
@@ -92,7 +110,6 @@ function gameOver() {
     fill("white");
     text("Game Over!", width/2, height/2);
     text("Click anywhere to try again.", width/2, 3*height/4);
-    score = score + 0
 }
 
 
