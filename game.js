@@ -15,7 +15,8 @@ var movement = true;
 var jumpImage;
 var sexyJabba;
 var hairy;
-var assSpeed = [5, 8, 12, 10];
+var laser;
+var laserImage;
 
 function preload() {
     playerImage = loadImage("http://i.imgur.com/gMG8oAS.png")
@@ -26,6 +27,7 @@ function preload() {
     jumpImage = loadImage("./Images/jump.png")
     sexyJabba = loadImage("./Images/sexyjabba.png")
     hairy = loadImage("./Images/hairy.png")
+    laserImage = loadImage("./Images/laser.png")
 }
 
 function setup() {
@@ -42,6 +44,8 @@ function setup() {
     flame.addImage(flameballImage);
     flame.position.x = 1200
     flame.position.y = 1000
+    //laser = createSprite();
+    //laser = addImage(laserImage);
 }
 
 function draw() {
@@ -49,17 +53,20 @@ function draw() {
     
     hunter.position.x = hunter.position.x + speed 
     
+    //laser.position.y = 10;
+    //laser.position.x = width/2;
+    
     if (hunter.position.x > width || hunter.position.x < 0) {
         speed = speed*-1
     }
     
     if (movement === true) {
         if (keyDown(RIGHT_ARROW) && player.position.x < width) {
-            player.position.x = player.position.x + 5
+            player.position.x = player.position.x + 8
         }
     
         if (keyDown(LEFT_ARROW) && player.position.x > 0) {
-            player.position.x = player.position.x - 5
+            player.position.x = player.position.x - 8
         }
         flame.position.x = 1200
         flame.position.y = 1000
@@ -78,7 +85,7 @@ function draw() {
         background(backgroundImage)
     }
     
-    enemy.position.y = enemy.position.y + random(assSpeed);
+    enemy.position.y = enemy.position.y + random(1, 20);
     
     if (enemy.position.y > height && movement === true) {
         enemy.position.y = 0;
