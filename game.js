@@ -17,6 +17,7 @@ var sexyJabba;
 var hairy;
 var laser;
 var laserImage;
+var scream;
 
 function preload() {
     playerImage = loadImage("http://i.imgur.com/gMG8oAS.png")
@@ -28,24 +29,32 @@ function preload() {
     sexyJabba = loadImage("./Images/sexyjabba.png")
     hairy = loadImage("./Images/hairy.png")
     laserImage = loadImage("./Images/laser.png")
+    scream = loadSound("./sounds/Female_Scream_Horror-NeoPhyTe-138499973.mp3")
 }
 
 function setup() {
     isGameOver = false;
     createCanvas(900, 600);
+    
     player = createSprite(width/2, height-100, 0, 0);
     player.addImage(playerImage)
+    
     enemy = createSprite(width/2, 0, 0, 0);
     enemy.addImage(enemyImage)
     enemy.rotationSpeed = random();
+    
     hunter = createSprite(width/2, 25, 0, 0);
     hunter.addImage(hunterImage)
+    
     flame = createSprite();
     flame.addImage(flameballImage);
     flame.position.x = 1200
     flame.position.y = 1000
+    
     //laser = createSprite();
     //laser = addImage(laserImage);
+    
+    scream.setVolume(0.1);
 }
 
 function draw() {
@@ -74,6 +83,7 @@ function draw() {
     
     if (score === 5) {
         background(jumpImage)
+        scream.play();
     } 
     else if (score === 10) {
         background(sexyJabba)
