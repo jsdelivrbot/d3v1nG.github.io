@@ -28,7 +28,7 @@ function preload() {
     jumpImage = loadImage("./Images/jump.png")
     sexyJabba = loadImage("./Images/sexyjabba.png")
     hairy = loadImage("./Images/hairy.png")
-    laserImage = loadImage("./Images/laser.png")
+    laserImage = loadImage("./Images/laser2.png")
 }
 
 function setup() {
@@ -50,8 +50,8 @@ function setup() {
     flame.position.x = 1200
     flame.position.y = 1000
     
-    laser = createSprite();
-    laser = addImage(laserImage);
+    laser = createSprite(width/2, 0, 0, 0);
+    laser.addImage(laserImage);
     
 }
 
@@ -99,18 +99,19 @@ function draw() {
         score = score + 1
     }
     
-    if (enemy.overlap(player)) {
+    if (enemy.overlap(player) || laser.overlap(player)) {
         gameOver();
     }
     
     if (isGameOver) {
         gameOver();
     } else {
-        if (enemy.overlap(player)){
+        if (enemy.overlap(player) || laser.overlap(player)){
             isGameOver = true;
         }
     }
     
+    laser.position.x = hunter.position.x
     laser.position.y = laser.position.y + 5
     
     if (laser.position.y > height && movement === true) {
@@ -118,6 +119,8 @@ function draw() {
         laser.position.x = random(5, width-5);
         score = score + 1
     }
+    
+    
     
     drawSprites();
     status();
