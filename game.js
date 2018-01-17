@@ -67,11 +67,11 @@ function draw() {
     
     if (movement === true) {
         if (keyDown(RIGHT_ARROW) && player.position.x < width) {
-            player.position.x = player.position.x + 8
+            player.position.x = player.position.x + 10
         }
     
         if (keyDown(LEFT_ARROW) && player.position.x > 0) {
-            player.position.x = player.position.x - 8
+            player.position.x = player.position.x - 10
         }
         flame.position.x = 1200
         flame.position.y = 1000
@@ -120,7 +120,9 @@ function draw() {
         score = score + 1
     }
     
-    
+    //if (hunter.position.x === 300 || hunter.position.x === 600) {
+    //    fireLaser()
+    //}
     
     drawSprites();
     status();
@@ -155,3 +157,8 @@ function status() {
     fill("white")
     text(score, 20, 30)
 }
+
+//function fireLaser() {
+    //laser.position.x = 
+    //laser.position.y = laser.position.y + 5
+//}
