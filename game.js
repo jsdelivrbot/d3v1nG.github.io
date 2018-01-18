@@ -112,7 +112,7 @@ function draw() {
     }
     
     laser.position.x = hunter.position.x
-    laser.position.y = laser.position.y + 5
+    laser.position.y = laser.position.y + 10
     
     if (laser.position.y > height && movement === true) {
         laser.position.y = 0;
