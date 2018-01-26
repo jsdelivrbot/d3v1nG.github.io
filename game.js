@@ -29,6 +29,8 @@ function preload() {
     sexyJabba = loadImage("./Images/sexyjabba.png")
     hairy = loadImage("./Images/hairy.png")
     laserImage = loadImage("./Images/laser2.png")
+    soundFormats('mp3', 'ogg');
+    scream = loadSound("./sounds/Female_Scream_Horror-NeoPhyTe-138499973.1.mp3")
 }
 
 function setup() {
@@ -79,6 +81,8 @@ function draw() {
     
     if (score === 5) {
         background(jumpImage)
+        scream.setVolume(10)
+        scream.play()
         
     } 
     else if (score === 10) {
