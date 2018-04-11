@@ -75,6 +75,12 @@ function draw() {
         if (keyDown(LEFT_ARROW) && player.position.x > 0) {
             player.position.x = player.position.x - 10
         }
+        if (keyDown(UP_ARROW) && player.position.x > 0) {
+            player.position.y = player.position.x - 10
+        }
+        if (keyDown(DOWN_ARROW) && player.position.x > 0) {
+            player.position.y = player.position.x + 10
+        }
         flame.position.x = 1200
         flame.position.y = 1000
     }
