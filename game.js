@@ -29,7 +29,7 @@ function preload() {
     sexyJabba = loadImage("./Images/sexyjabba.png")
     hairy = loadImage("./Images/hairy.png")
     laserImage = loadImage("./Images/laser2.png")
-    soundFormats('mp3', 'ogg');
+    /*soundFormats('mp3', 'ogg');*/
     scream = loadSound("./sounds/Female_Scream_Horror-NeoPhyTe-138499973.1.mp3")
 }
 
@@ -75,11 +75,11 @@ function draw() {
         if (keyDown(LEFT_ARROW) && player.position.x > 0) {
             player.position.x = player.position.x - 10
         }
-        if (keyDown(UP_ARROW) && player.position.x > 0) {
+        /*if (keyDown(UP_ARROW) && player.position.x > 0) {
             player.position.y = player.position.x - 10
         }
         if (keyDown(DOWN_ARROW) && player.position.x > 0) {
-            player.position.y = player.position.x + 10
+            player.position.y = player.position.x + 10*/
         }
         flame.position.x = 1200
         flame.position.y = 1000
